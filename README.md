@@ -16,9 +16,9 @@ L'application implémente un cycle CRUD complet et la gestion multi-utilisateurs
 ## Environnement Technique
 
 * **Langage :** Python 3.x
-* **Interface Graphique :** CustomTkinter (Wrapper moderne de Tkinter)
-* **Base de Données :** SQLite3 (Intégré à Python)
-* **Déploiement :** PyInstaller (Compilation en exécutable Windows)
+* **Interface Graphique :** CustomTkinter
+* **Base de Données :** SQLite3
+* **Déploiement :** PyInstaller
 
 ## Architecture du Code
 
@@ -57,4 +57,4 @@ Une version compilée autonome est disponible pour le déploiement.
 
 ## Auteur
 
-Projet développé par [Ton Prénom] [Ton Nom] - BTS SIO.
+Projet développé par Zarath Mougamadou - BTS SIO.
