@@ -85,7 +85,7 @@ class TaskyApp(ctk.CTk):
         if pseudo and password:
             success = database.user_signin(pseudo, password)
             if success:
-                messagebox.showinfo("Success", "Account created ! Please log into it.")
+                messagebox.showinfo("Success", "Account created ! Please log in.")
                 self.show_login()
             else:
                 messagebox.showerror("Error", "This pseudo is already used.")
@@ -132,11 +132,9 @@ class TaskyApp(ctk.CTk):
             title = t[1]
             status = t[2]
             
-            # --- Ligne conteneur ---
             row_frame = ctk.CTkFrame(self.scrollter, fg_color="transparent")
             row_frame.pack(fill="x", pady=5)
             
-            # --- Checkbox ---
             chk = ctk.CTkCheckBox(
                 row_frame, 
                 text=title, 
@@ -145,7 +143,6 @@ class TaskyApp(ctk.CTk):
             chk.pack(side="left", padx=10)
             if status == 1: chk.select()
                 
-            # --- Bouton Supprimer (Rouge, à droite) ---
             btn_del = ctk.CTkButton(
                 row_frame, 
                 text="X", 
@@ -156,20 +153,18 @@ class TaskyApp(ctk.CTk):
             )
             btn_del.pack(side="right", padx=5)
 
-            # --- Bouton Modifier (Bleu, à côté de Supprimer) ---
             btn_edit = ctk.CTkButton(
                 row_frame, 
-                text="✎",  # Symbole crayon
+                text="✎",
                 width=30, 
-                fg_color="#1f6aa5", # Bleu standard
+                fg_color="#1f6aa5",
                 command=lambda tid=task_id: self.edit_task_action(tid)
             )
             btn_edit.pack(side="right", padx=5)
 
 
-    # Éditer (Ouvre une pop-up)
     def edit_task_action(self, task_id):
-        # Boîte de dialogue
+        
         dialog = ctk.CTkInputDialog(text="New title :", title="Edit task")
         
         # Le programme attend que l'utilisateur clique sur OK
@@ -180,7 +175,7 @@ class TaskyApp(ctk.CTk):
             database.update_task_title(task_id, new_title)
             self.load_tasks_list()
 
-    # Changer le statut
+
     def toggle_status(self, task_id, current_status):
         # Si c'était 0, ça devient 1. Si c'était 1, ça devient 0.
         new_status = 1 if current_status == 0 else 0
@@ -188,7 +183,7 @@ class TaskyApp(ctk.CTk):
         # Recharger la liste pour que l'affichage soit synchro
         self.load_tasks_list()
 
-    # Supprimer
+
     def delete_task_action(self, task_id):
         database.delete_task(task_id)
         self.load_tasks_list()
